@@ -1,0 +1,19 @@
+import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import StartButton from '../components/StartButton';
+import { Navigation } from '../components/Navigation';
+
+export const Index = () => {
+  return (
+    <>
+      <Navigation/>
+      <Container className="fluid h-75">
+          <Row className='h-100'>
+            <Col className='d-flex align-self-center justify-content-center'>
+              <StartButton></StartButton>
+            </Col>
+          </Row>
+      </Container>
+      </>
+  );
+};
