@@ -9,14 +9,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./backend
+      - ./:/backend
     ports:
       - "8080:8080"
   frontend:
     container_name: frontend
     image: frontend_image
     build:
-      context: ./frontend
+      context: ./:/frontend
       dockerfile: Dockerfile
     volumes:
       - ./frontend
