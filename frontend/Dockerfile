@@ -7,7 +7,7 @@ RUN apk --no-cache add --virtual builds-deps build-base python3
 COPY ./package.json ./
 RUN npm install
 COPY . ./
-RUN dir
+RUN ls -la
 EXPOSE 80
 USER node
 CMD ["npm", "start"]
