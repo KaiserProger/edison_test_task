@@ -1,6 +1,6 @@
 FROM golang:1.20-alpine
 
-WORKDIR /app
+WORKDIR /backend
 
 COPY go.mod ./
 COPY go.sum ./

@@ -9,7 +9,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./app
+      - ./backend
     ports:
       - "8080:8080"
   frontend:
@@ -19,7 +19,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     volumes:
-      - ./frontend_app
+      - ./frontend
     ports:
       - "80:80"
 
