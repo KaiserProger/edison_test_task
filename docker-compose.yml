@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  backend:
+    container_name: backend
+    image: backend_image
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend
+    ports:
+      - "8080:8080"
+  frontend:
+    container_name: frontend
+    image: frontend_image
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend
+    ports:
+      - "80:80"
+
+networks:
+  default:
+    external: true
+    name: app_main
