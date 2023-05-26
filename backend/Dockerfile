@@ -8,8 +8,8 @@ RUN go mod download
 
 COPY . ./
 
-RUN go build -o application
+RUN CGO_ENABLED=0 GOOS=linux go build -o /application
 
 EXPOSE 8080
 
-CMD [ "./application" ]
+CMD [ "/application" ]
