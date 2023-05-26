@@ -16,7 +16,7 @@ services:
     container_name: frontend
     image: frontend_image
     build:
-      context: ./:/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     volumes:
       - ./frontend
