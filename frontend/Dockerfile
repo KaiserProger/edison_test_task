@@ -8,8 +8,9 @@ COPY ./package.json ./
 RUN npm install
 COPY . ./
 COPY ./package.json ./
-COPY ./package.json ./frontend
-RUN ls -la /frontend
+COPY ./package.json ./frontend/
+RUN ls -la ./frontend
+RUN ls -la .
 EXPOSE 80
 USER node
 CMD ["npm", "start"]
