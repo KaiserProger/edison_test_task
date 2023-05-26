@@ -15,7 +15,7 @@ func main() {
 	handlers.RegisterHandlers(handler)
 	services.RegisterGob()
 	server := http.Server{
-		Addr:    ":8000",
+		Addr:    ":8080",
 		Handler: middlewares.Cors(handler),
 	}
 	log.Fatal(server.ListenAndServe())

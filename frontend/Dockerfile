@@ -9,6 +9,6 @@ RUN npm install
 COPY . ./
 COPY ./package.json .
 RUN ls -la .
-EXPOSE 80
+EXPOSE 3000
 USER node
 CMD ["npm", "start"]
