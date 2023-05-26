@@ -6,7 +6,7 @@ services:
     image: backend_image
     restart: always
     build:
-      context: ./backend
+      context: backend
       dockerfile: Dockerfile
     volumes:
       - .:/backend
@@ -16,7 +16,7 @@ services:
     container_name: frontend
     image: frontend_image
     build:
-      context: ./frontend
+      context: frontend
       dockerfile: Dockerfile
     volumes:
       - .:/frontend
