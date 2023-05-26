@@ -5,7 +5,7 @@ services:
     container_name: backend
     image: backend_image
     restart: always
-    build: .
+    build: /backend/
     volumes:
       - .:/backend
     ports:
@@ -13,7 +13,7 @@ services:
   frontend:
     container_name: frontend
     image: frontend_image
-    build: .
+    build: /frontend/
     volumes:
       - .:/frontend
     ports:
