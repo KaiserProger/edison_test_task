@@ -4,12 +4,11 @@ WORKDIR /app
 
 RUN apk --no-cache add --virtual builds-deps build-base python3
 
-COPY ./package.json ./
+COPY --chown=node:node ./package.json ./
 RUN npm install
 
-RUN chmod 777 /app/node_modules
-
-COPY . ./
-EXPOSE 3000
+COPY --chown=node:node . ./
 USER node
+EXPOSE 3000
+
 CMD ["npm", "run", "start"]
