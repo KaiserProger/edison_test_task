@@ -11,9 +11,9 @@ export const GuessesPage = () => {
   useEffect(() => {
     const handler = async () => {
       await pollExtrasenses();
+      setTransactions(JSON.parse(sessionStorage.getItem("guesses") || "[]"));
     };
     handler();
-    setTransactions(JSON.parse(sessionStorage.getItem("guesses") || "[]"));
   }, [setTransactions]);
   if(transactions.length === 0) return (
     <>

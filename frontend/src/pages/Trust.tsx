@@ -5,13 +5,13 @@ import { fetchTrustLevels } from '../network/trust';
 import { Navigation } from '../components/Navigation';
 
 export const ExtrasenseTrustPage = () => {
-  const [trustLevels, setTrustLevels] = useState<TrustLevel[]>(JSON.parse(sessionStorage.getItem("trust-levels") || "[]"));
+  const [trustLevels, setTrustLevels] = useState<TrustLevel[]>([]);
   useEffect(() => {
     const handler = async () => {
       await fetchTrustLevels();
+      setTrustLevels(JSON.parse(sessionStorage.getItem("trust-levels") || "[]"));
     };
     handler();
-    setTrustLevels(JSON.parse(sessionStorage.getItem("trust-levels") || "[]"));
   }, [setTrustLevels]);
   return (
     <>

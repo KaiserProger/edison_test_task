@@ -10,9 +10,9 @@ export const History = () => {
   useEffect(() => {
     const handler = async () => {
       await transactionHistory();
+      setTransactions(JSON.parse(sessionStorage.getItem("transaction-history") || "[]"));
     };
     handler();
-    setTransactions(JSON.parse(sessionStorage.getItem("transaction-history") || "[]"));
   }, []);
   return (
     <>

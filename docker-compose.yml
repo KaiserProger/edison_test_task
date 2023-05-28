@@ -5,17 +5,21 @@ services:
     container_name: backend
     image: backend_image
     restart: always
-    build: ./backend/
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     volumes:
-      - .:/backend
+      - ./backend:/app
     ports:
       - "8080:8080"
   frontend:
     container_name: frontend
     image: frontend_image
-    build: ./frontend/
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
     volumes:
-      - .:/frontend
+      - .:/frontend:/app
     ports:
       - "3000:3000"
 
