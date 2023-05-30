@@ -6,12 +6,14 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 const ERROR_MESSAGE = 'Please enter positive two-digit number!';
+const TYPE_ERROR_MESSAGE = 'Must be a number';
 
 const numberSchema = Yup.object().shape({
   number: Yup.number()
     .min(10, ERROR_MESSAGE)
     .max(99, ERROR_MESSAGE)
-    .required(),
+    .required()
+    .typeError(TYPE_ERROR_MESSAGE),
 });
 
 export default function EnterNumber() {
