@@ -20,6 +20,7 @@ export default function EnterNumber() {
     <Row className='mt-4'>
       <Col></Col>
       <Col xs={4}>
+        <h1>Enter two-digit number</h1>
         <Formik
           initialValues={{number: 10}}
           validationSchema={numberSchema}

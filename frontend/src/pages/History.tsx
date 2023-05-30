@@ -14,11 +14,6 @@ export const History = () => {
     };
     handler();
   }, []);
-  if(transactions.length === 0) return (
-    <>
-      <p>Please wait!</p>
-    </>
-  )
   return (
     <>
       <Navigation/>
@@ -29,6 +24,9 @@ export const History = () => {
               <thead>
                 <tr>
                   <th>Number</th>
+                  {transactions.length === 0 && (
+                    <h1>There's no numbers yet...</h1>
+                  )}
                   {transactions.length > 0 && transactions[0].extrasense_guesses.map((value) => (
                     <th style={{
                         "wordWrap": "break-word", 
