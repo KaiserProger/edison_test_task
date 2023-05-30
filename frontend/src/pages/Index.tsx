@@ -9,8 +9,7 @@ export const Index = () => {
       <Navigation/>
       <Container className="fluid h-75">
           <Row className='h-100'>
-            <Col className='d-flex flex-column align-self-center justify-content-center'>
-              <h3>Press button</h3>
+            <Col className='d-flex align-self-center justify-content-center'>
               <StartButton></StartButton>
             </Col>
           </Row>
