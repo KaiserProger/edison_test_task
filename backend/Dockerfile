@@ -7,6 +7,9 @@ RUN go mod download
 
 COPY . ./
 
+ARG CORS_IP
+ENV CORS_IP $CORS_IP
+
 RUN CGO_ENABLED=0 GOOS=linux go build -o /application
 
 EXPOSE 8080

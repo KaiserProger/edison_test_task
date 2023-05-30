@@ -1,13 +1,14 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 WORKDIR /app
-
+COPY ./package.json .
 RUN apk --no-cache add --virtual builds-deps build-base python3
-
-COPY --chown=node:node ./package.json .
 RUN npm install
+COPY . .
 
-COPY --chown=node:node . .
+ARG REACT_APP_SERVER_IP
+ENV REACT_APP_SERVER_IP $REACT_APP_SERVER_IP
+
 RUN chmod 777 /app/node_modules
 EXPOSE 3000
 

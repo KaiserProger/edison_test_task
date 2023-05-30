@@ -3,6 +3,7 @@ package services
 import (
 	"extra_sense/dto"
 	"extra_sense/entities"
+	"extra_sense/globals"
 
 	"github.com/gorilla/sessions"
 )
@@ -27,11 +28,24 @@ func FindTransactionsByUserNumberId(transactions []*entities.GuessTransaction, u
 }
 
 func GetAllTransactions(session *sessions.Session) []dto.TransactionHistoryDto {
-	transactions := GetStoreOrCreate[entities.GuessTransaction](session, TRANSACTIONS_STORE_NAME)
-	userNumbers := GetStoreOrCreate[entities.UserNumber](session, USER_NUMBERS_STORE_NAME)
+	allTransactions := GetStoreOrCreate[entities.GuessTransaction](session, globals.TRANSACTIONS_STORE_NAME)
+	transactionMap := make(map[string][]*entities.GuessTransaction, 0)
+	for _, j := range allTransactions {
+		record, ok := transactionMap[j.UserNumberID]
+		if !ok {
+			record = make([]*entities.GuessTransaction, 0)
+		}
+		record = append(record, j)
+		transactionMap[j.UserNumberID] = record
+	}
+	userNumbers := GetUserNumbers(session)
 	dtos := make([]dto.TransactionHistoryDto, len(userNumbers))
 	for j, userNumber := range userNumbers {
-		dtos[j] = dto.NewTransactionHistoryDto(userNumber.Number, FindTransactionsByUserNumberId(transactions, userNumber.ID))
+		record, ok := transactionMap[userNumber.ID]
+		if !ok {
+			continue
+		}
+		dtos[j] = dto.NewTransactionHistoryDto(userNumber.Number, record)
 	}
 	return dtos
 }

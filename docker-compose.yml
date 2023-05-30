@@ -8,6 +8,8 @@ services:
     build: 
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        CORS_IP: ${CORS_IP}
     volumes:
       - ./backend:/app
     ports:
@@ -18,11 +20,14 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        REACT_APP_SERVER_IP: ${SERVER_IP}
     volumes:
       - ./frontend:/app
       - /app/node_modules
     ports:
       - "3000:3000"
+    
 
 networks:
   default:
