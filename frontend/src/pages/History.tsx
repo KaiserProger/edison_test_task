@@ -20,28 +20,30 @@ export const History = () => {
       <Container>
         <Row>
           <Col className='d-flex flex-row'>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Number</th>
-                  {transactions.length === 0 && (
-                    <h1>There's no numbers yet...</h1>
-                  )}
-                  {transactions.length > 0 && transactions[0].extrasense_guesses.map((value) => (
-                    <th style={{
-                        "wordWrap": "break-word", 
-                        "minWidth": "160px",
-                        "maxWidth": "160px"
-                      }}>{value.guessed_by}</th>
+            {transactions.length === 0 && (
+              <h1>There's no numbers yet...</h1>
+            )}
+            {transactions.length > 0 && (
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Number</th>
+                    {transactions[0].extrasense_guesses.map((value) => (
+                      <th style={{
+                          "wordWrap": "break-word", 
+                          "minWidth": "160px",
+                          "maxWidth": "160px"
+                        }}>{value.guessed_by}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((value, index) => (
+                    <UserNumberRow {...value} key={index} />
                   ))}
-                </tr>
-              </thead>
-              <tbody>
-                {transactions.map((value, index) => (
-                  <UserNumberRow {...value} key={index} />
-                ))}
-              </tbody>
-            </Table>
+                </tbody>
+              </Table>
+            )}
           </Col>
         </Row>
       </Container>
