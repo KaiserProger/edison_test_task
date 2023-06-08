@@ -18,15 +18,13 @@ services:
     container_name: frontend
     image: frontend_image
     build: 
-      context: ./frontend
+      context: ./vue-frontend
       dockerfile: Dockerfile
-      args:
-        REACT_APP_SERVER_IP: ${SERVER_IP}
     volumes:
-      - ./frontend:/app
+      - ./vue-frontend:/app
       - /app/node_modules
     ports:
-      - "80:3000"
+      - "80:5173"
     
 
 networks:
