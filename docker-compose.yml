@@ -18,10 +18,10 @@ services:
     container_name: frontend
     image: frontend_image
     build: 
-      context: ./vue-frontend
+      context: ./frontend
       dockerfile: Dockerfile
     volumes:
-      - ./vue-frontend:/app
+      - ./frontend:/app
       - /app/node_modules
     ports:
       - "80:5173"
