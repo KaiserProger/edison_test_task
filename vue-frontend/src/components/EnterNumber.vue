@@ -5,7 +5,7 @@
   import { toTypedSchema } from '@vee-validate/yup';
   import { checkAnswers } from '@/network/checkExtrasenseAnswers';
   import router from '@/router';
-  const { handleSubmit } = useForm({
+  const { handleSubmit, values } = useForm({
     validationSchema: toTypedSchema(object().shape({
       number: number().min(10, "Too low!")
       .max(99, "Too much!").required("Please enter a number")
@@ -13,7 +13,7 @@
     })),
   });
 
-  const onSubmit = handleSubmit((values) => {
+  const onSubmit = handleSubmit((values: {number: number}) => {
     checkAnswers(values.number);
     router.push("/");
   });
@@ -27,7 +27,7 @@
       <form @submit="onSubmit">
         <div class="mb-3">
           <label for="numberInput" class="form-label">Enter a number</label>
-          <input type="number" class="form-control" id="numberInput" aria-describedby="numberHelp">
+          <input type="number" class="form-control" id="numberInput" aria-describedby="numberHelp" v-model="values.number">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

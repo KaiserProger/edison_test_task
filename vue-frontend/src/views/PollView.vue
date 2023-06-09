@@ -14,7 +14,7 @@
 
 <template>
   <div class="container">
-    <div class="row row-cols-2 row-cols-md-4 g-4">
+    <div class="row row-cols-2 row-cols-md-4 g-4 mt-4">
       <ExtraSenseCard
         v-for="guess in store.transactions"
         :number="guess.number"

@@ -11,7 +11,7 @@
 
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row mt-2">
       <div class="col">
         <table class="table" v-if="store.transactions.length > 0">
           <thead>
@@ -22,7 +22,7 @@
                 v-for="(value, index) in store.transactions[0].extrasense_guesses"
                 :key="index"
               >
-                {{ value.guessed_by }}
+                {{ value.guessed_by.slice(0, 9) }}
               </th>
             </tr>
           </thead>
