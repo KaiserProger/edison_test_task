@@ -1,4 +1,4 @@
-export type TrustLevel = {
+export interface TrustLevel {
     extrasenseId: string;
     trust: number;
 };

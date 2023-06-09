@@ -5,5 +5,5 @@ export const checkAnswers = async (number_: number) => {
         params: {
             "number": number_,
         }
-    })
+    });
 };

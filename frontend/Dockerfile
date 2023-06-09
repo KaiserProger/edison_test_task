@@ -1,16 +1,12 @@
 FROM node:18-alpine
 
 WORKDIR /app
-COPY ./package.json .
-RUN apk --no-cache add --virtual builds-deps build-base python3
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json /app/package.json
 RUN npm install
-COPY . .
+RUN npm install @vue/cli@3.7.0 -g
 
-ARG REACT_APP_SERVER_IP
-ENV REACT_APP_SERVER_IP $REACT_APP_SERVER_IP
-
-RUN chmod 777 /app/node_modules
-EXPOSE 3000
-
-USER node
-CMD ["npm", "run", "start"]
+EXPOSE 5173
+CMD ["npm", "run", "dev"]

@@ -1,6 +1,6 @@
-import { GuessTransaction } from "./guess_transaction";
+import { type GuessTransaction } from "./guess_transaction";
 
-export type TransactionHistory = {
+export interface TransactionHistory {
     correct_number: number;
     extrasense_guesses: GuessTransaction[];
 };
